@@ -1,0 +1,31 @@
+version: '3.6'
+services:
+  us1:
+    build: ./node-example
+    environment:
+      - SERVER_NAME=USA_1
+  us2:
+    build: ./node-example
+    environment:
+      - SERVER_NAME=USA_2
+  uk1:
+    build: ./node-example
+    environment:
+      - SERVER_NAME=UK_1
+  rest:
+    build: ./node-example
+    environment:
+      - SERVER_NAME=REST_1
+  backup:
+    build: ./node-example
+    environment:
+      - SERVER_NAME=BACKUP_1
+  balancer:
+    image: karljohns0n/nginx-more
+    volumes:
+      - ./balancer.conf:/etc/nginx/nginx.conf
+      - ./GeoLite2-City.mmdb:/var/lib/GeoIP/GeoLite2-Country.mmdb
+    ports:
+      - "3000:80"
+volumes:
+  volumes: {}
