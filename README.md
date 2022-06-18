@@ -1,5 +1,7 @@
 # Balancing homework
 
+Download geoip db
+
 docker-compose up -d
 
 open localhost:3000 using ngrok
